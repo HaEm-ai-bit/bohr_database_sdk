@@ -1,0 +1,14 @@
+{
+  "description": "纳米酶库分类上传配置（仅纳米酶 8 张表）",
+  "database_ak": "878qb",
+  "tables": [
+    {"table_name": "1_nanozyme_reactions", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/1_nanozyme_reactions_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/1_nanozyme_reactions.csv", "category": "纳米酶库"},
+    {"table_name": "2_nanozyme_details", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/2_nanozyme_details_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/2_nanozyme_details.csv", "category": "纳米酶库"},
+    {"table_name": "3_nanozyme_exp_conditions", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/3_nanozyme_exp_conditions_standardized_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/3_nanozyme_exp_conditions_standardized.csv", "category": "纳米酶库"},
+    {"table_name": "4_nanozyme_participants", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/4_nanozyme_participants_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/4_nanozyme_participants.csv", "category": "纳米酶库"},
+    {"table_name": "5_nanozyme_kinetics", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/5_nanozyme_kinetics_standardized_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/5_nanozyme_kinetics_standardized.csv", "category": "纳米酶库"},
+    {"table_name": "6_nanozyme_char_size", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/6_nanozyme_char_size_standardized_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/6_nanozyme_characterization_size_standardized.csv", "category": "纳米酶库"},
+    {"table_name": "7_nanozyme_applications", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/7_nanozyme_applications_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/7_nanozyme_applications.csv", "category": "纳米酶库"},
+    {"table_name": "8_nanozyme_application_metrics", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/nano/8_nanozyme_application_metrics_description.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/4.nanozyme_database/8_nanozyme_application_metrics.csv", "category": "纳米酶库"}
+  ]
+}

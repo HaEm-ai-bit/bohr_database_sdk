@@ -1,0 +1,12 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+mutation_description,str,突变位点详细描述
+activity_qualitative,str,"活性定性评价 (如 Inactive, Higher)"
+conversion_rate,num,突变体测得的转化率
+product_yield,num,突变体产率
+product_yield_unit,str,产量单位
+selectivity_regio,str,突变体区域选择性描述
+selectivity_stereo,str,突变体立体选择性描述
+enantiomeric_excess,num,突变体 ee 值
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

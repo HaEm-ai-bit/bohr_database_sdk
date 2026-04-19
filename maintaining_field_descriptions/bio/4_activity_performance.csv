@@ -1,0 +1,14 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+conversion_rate,num,底物转化率数值
+conversion_rate_unit,str,转化率单位 (%)
+conversion_rate_error,str,转化率误差 (±)
+product_yield,num,产物产量/产率数值
+product_yield_unit,str,产量单位
+product_yield_error,str,产量误差范围
+regioselectivity,str,区域选择性 (Regioselectivity)
+stereoselectivity,str,立体选择性 (Stereoselectivity)
+enantiomeric_excess,num,ee 值数值
+enantiomeric_excess_unit,str,ee 单位
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

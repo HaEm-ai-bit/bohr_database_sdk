@@ -1,0 +1,9 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+parameter_type,str,"动力学参数类型，如Km (米氏常数), Vmax (最大反应速率), kcat (转换数), kcat/Km (催化效率)等"
+substrate_name,str,底物名称，动力学参数对应的底物
+value,num,参数数值，标准化后的数值
+unit,str,"参数单位，标准化后的单位 (Km: mM, kcat: s⁻¹, Vmax: µmol/min/mg)"
+error_margin,str,误差范围，如标准差、标准误等
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

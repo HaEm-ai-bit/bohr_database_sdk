@@ -1,0 +1,7 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+role,str,"参与者角色，如substrate (底物), product (产物), cofactor (辅因子)等"
+participant_name,str,参与者名称，化学物质的名称
+smiles,str,SMILES结构式，化学物质的简化分子线性输入规范
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

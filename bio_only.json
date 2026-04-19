@@ -1,0 +1,16 @@
+{
+  "description": "生物反应库分类上传配置（仅生物反应 10 张表）",
+  "database_ak": "531km",
+  "tables": [
+    {"table_name": "1_reactions_core", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/1_reactions_core.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/1_reactions_core.csv", "category": "生物反应库"},
+    {"table_name": "2_enzymes", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/2_enzymes.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/2_enzymes.csv", "category": "生物反应库"},
+    {"table_name": "3_experimental_conditions", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/3_experimental_conditions.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/3_experimental_conditions.csv", "category": "生物反应库"},
+    {"table_name": "4_activity_performance", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/4_activity_performance.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/4_activity_performance.csv", "category": "生物反应库"},
+    {"table_name": "5_reaction_participants", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/5_reaction_participants.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/5_reaction_participants.csv", "category": "生物反应库"},
+    {"table_name": "6_kinetic_parameters", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/6_kinetic_parameters.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/6_kinetic_parameters.csv", "category": "生物反应库"},
+    {"table_name": "7_mutants_characterized", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/7_mutants_characterized.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/7_mutants_characterized.csv", "category": "生物反应库"},
+    {"table_name": "8_inhibitors_main", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/8_inhibitors_main.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/8_inhibitors_main.csv", "category": "生物反应库"},
+    {"table_name": "9_inhibition_params", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/9_inhibition_params.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/9_inhibition_params.csv", "category": "生物反应库"},
+    {"table_name": "10_auxiliary_factors", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/10_auxiliary_factors.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/10_auxiliary_factors.csv", "category": "生物反应库"}
+  ]
+}

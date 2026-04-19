@@ -1,0 +1,12 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+source_type,str,数据源 (wild_type / mutant)
+mutation_description,str,突变详情 (若是野生型则填 WT)
+parameter_type,str,"参数名 (Km, kcat, kcat/Km 等)"
+substrate_name,str,对应底物名称
+value,num,参数数值
+unit,str,参数单位
+error_margin,str,误差范围 (SD/SEM)
+details,str,动力学测定补充信息
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

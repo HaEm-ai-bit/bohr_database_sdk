@@ -1,0 +1,8 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+mimicked_enzyme_type,str,"模拟的天然酶类型，如POD (过氧化物酶), OXD (氧化酶), CAT (过氧化氢酶), SOD (超氧化物歧化酶)等"
+reaction_equation,str,催化反应方程式，描述反应物和产物的化学转化
+selectivity,str,反应选择性信息，描述纳米酶对特定底物或反应的选择性
+notes,str,补充说明信息，记录其他相关备注
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

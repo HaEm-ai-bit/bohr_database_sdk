@@ -1,0 +1,10 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+application_id,str,应用唯一标识符，关联到7_nanozyme_applications表
+metric_name,str,"指标名称，如LOD (检测限), Linear Range (线性范围), IC50等"
+value,str,指标数值
+value_range,str,数值范围，如线性范围的上下限
+unit,str,指标单位
+target,str,指标对应的具体目标物质或疾病
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

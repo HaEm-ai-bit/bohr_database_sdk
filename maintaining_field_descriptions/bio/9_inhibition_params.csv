@@ -1,0 +1,10 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+inhibitor_name,str,对应抑制剂名称 (关联 Table 8)
+parameter_type,str,"参数名 (Ki, IC50, Kd)"
+value,num,参数数值
+unit,str,"单位 (如 nM, μM)"
+error_margin,str,误差范围
+thermodynamics,str,热力学参数描述 (如 ΔG)
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

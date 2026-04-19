@@ -1,0 +1,12 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+inhibitor_name,str,抑制剂/竞争者名称
+inhibition_type,str,"抑制类型 (Competitive, etc.)"
+inhibitor_smiles,smiles,抑制剂 SMILES
+inhibitor_synonyms,str,抑制剂别名（以 | 分隔）
+activity_qualitative,str,受抑制后活性的定性描述
+inhibition_qualitative,str,对抑制强度的描述
+inhibitor_details,str,抑制实验细节描述
+inhibitor_notes,str,补充备注信息
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

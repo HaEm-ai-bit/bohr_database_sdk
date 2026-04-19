@@ -1,0 +1,23 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+enzyme_name,str,酶推荐名称
+enzyme_synonyms,str,酶同义词（代码处理：以 | 分隔）
+gene_name,str,编码基因名称（以 | 分隔）
+organism,str,来源物种
+ec_number,str,EC 编号
+genbank_id,str,GenBank Accession ID
+pdb_id,str,PDB 结构 ID（以 | 分隔）
+uniprot_id,str,UniProt Accession ID
+subcellular_localization,str,酶的亚细胞定位
+optimal_temperature,num,最适温度数值
+optimal_temperature_unit,str,温度单位 (通常 °C)
+optimal_ph,num,最适 pH 值（单一值或范围的中位数）
+optimal_ph_min,num,最适pH范围的最小值（从optimal_ph解析，若为单一值则与optimal_ph相同）
+optimal_ph_max,num,最适pH范围的最大值（从optimal_ph解析，若为单一值则与optimal_ph相同）
+optimal_conditions_details,str,最适条件文字描述
+verification_status,str,验证状态：Manually Verified / Expert QA Verified
+sequence,str,氨基酸序列
+match_source,str,序列来源说明（如 uniprot:P12345 或 search: Name - UniprotID）
+match_description,str,匹配描述（包含物种名、蛋白质名等元信息）
+seq_confidence,str,"序列置信度（High: UniProt ID, Medium: PDB/NCBI ID, Low: 名称搜索）"

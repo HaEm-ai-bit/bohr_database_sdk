@@ -1,0 +1,9 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+application_id,str,应用唯一标识符，结合doi和entry_id可定位具体应用
+application_category,str,"应用类别，如Biosensing (生物传感), Therapeutics (治疗), Environmental (环境)等"
+test_model,str,"测试模型，如in vitro (体外), in vivo (体内), cell culture (细胞培养)等"
+target_analyte_or_disease,str,目标分析物或疾病，应用针对的检测目标或治疗疾病
+synergistic_agent,str,协同剂，与纳米酶协同作用的其他物质
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

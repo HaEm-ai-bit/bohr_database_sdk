@@ -1,0 +1,12 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+assay_type,str,检测类型，实验测定方法
+solvent_buffer,str,溶剂/缓冲液，反应体系使用的溶剂或缓冲体系
+ph_value,num,pH值，反应条件的酸碱度（单值或均值）
+ph_min,num,pH最小值，pH范围的下限
+ph_max,num,pH最大值，pH范围的上限
+ph_details,str,pH详细信息，如使用的缓冲液类型等补充说明
+temperature_value,num,温度数值，反应温度（标准化后单位为°C）
+temperature_unit,str,温度单位，标准化后统一为°C
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

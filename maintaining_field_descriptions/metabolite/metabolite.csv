@@ -1,0 +1,47 @@
+字段名,数据类型,含义
+participant_name_standardized,str,标准化后的代谢物名称
+original_labeling,str,文献中涉及代谢物原始标签或别名（如有）
+iupac_name,str,IUPAC 系统命名法名称
+pubchem_cid,str,PubChem 化合物 ID
+molecular_formula,str,分子式
+canonical_smiles,smiles,规范化 SMILES 字符串
+isomeric_smiles,smiles,包含立体化学信息的 SMILES（推荐使用）
+inchi,str,IUPAC 国际化合物标识字符串
+inchikey,str,InChI 的哈希值 (27字符)
+exact_mass,num,精确质量 (基于同位素质量)
+molecular_weight,num,平均分子量
+xlogp,num,预测的脂水分配系数 (LogP)
+hbond_donor_count,num,氢键供体数量
+hbond_acceptor_count,num,氢键受体数量
+rotatable_bond_count,num,可旋转键数量
+tpsa,num,拓扑极性表面积
+heavy_atom_count,num,重原子数量 (非氢原子)
+complexity,num,分子复杂度评分
+charge,num,生理环境下的净电荷
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,相关文献的 DOI 标识符
+verification_status,str,数据质量与来源状态：Expert QA Verified(专家复核)/Manually Verified(人工校验)/HMDB Reviewed(HMDB数据库引用)/MetaboLights Reviewed(MetaboLights/ChEBI数据库引用)
+smiles_source,str,SMILES来源标识：原文(文献直接提取)/PubChem(PubChem API获取)/HMDB(HMDB数据库)/ChEBI(ChEBI/MetaboLights数据库)
+hmdb_accession,str,HMDB 数据库唯一索引号
+chebi_id,str,ChEBI 数据库ID
+metabolights_id,str,MetaboLights 数据库ID（MTBLC格式）
+normal_concentration_biospecimen,str,"检测样本类型 (如 Blood, Urine, Saliva)"
+normal_concentration_value,str,浓度数值或范围 (如 1.2 或 0.5-2.0)
+normal_concentration_mean,num,从浓度值解析得到的平均浓度
+normal_concentration_min,num,从浓度值解析得到的最小浓度
+normal_concentration_max,num,从浓度值解析得到的最大浓度
+normal_concentration_units,str,"浓度单位 (如 uM, mg/dL)"
+normal_concentration_subject_age,str,"受试者年龄段 (如 Adult, Infant)"
+normal_concentration_subject_sex,str,"受试者性别 (如 Male, Female, Both)"
+normal_concentration_subject_condition,str,受试者状态 (通常为 Healthy 或空)
+abnormal_concentration_biospecimen,str,检测样本类型
+abnormal_concentration_value,str,浓度数值或范围
+abnormal_concentration_mean,num,从浓度值解析得到的平均浓度
+abnormal_concentration_min,num,从浓度值解析得到的最小浓度
+abnormal_concentration_max,num,从浓度值解析得到的最大浓度
+abnormal_concentration_units,str,浓度单位
+abnormal_concentration_patient_age,str,患者年龄
+abnormal_concentration_patient_sex,str,患者性别
+abnormal_concentration_patient_information,str,"描述具体的疾病名称或病理状态 (e.g., Kidney Disease)"
+source_organism,str,"具体物种名称 (e.g., Homo sapiens, Escherichia coli)"
+source_organism_group,str,"物种分类组 (e.g., Human, Bacteria, Fungi)"

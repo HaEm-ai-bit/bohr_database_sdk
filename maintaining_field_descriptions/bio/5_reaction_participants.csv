@@ -1,0 +1,12 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+role,str,参与角色 (substrate / product)
+participant_name,str,化合物原始名称
+participant_name_standardized,str,标准化后的代谢物名称
+original_labeling,str,文献中的代谢物原始标签
+smiles,smiles,SMILES 结构字符串
+molecular_formula,str,分子式
+sequence,str,肽或核酸的单字母序列
+pubchem_cid,num,PubChem 化合物 ID
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

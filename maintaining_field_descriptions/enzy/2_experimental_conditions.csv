@@ -1,0 +1,13 @@
+﻿字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+assay_type,str,测定类型 (in vitro / in vivo)
+assay_details,str,测定方法细节
+solvent_buffer,str,缓冲液/溶剂组成及浓度
+ph,num,实验设定的 pH 值
+ph_details,str,关于 pH 调节的备注
+temperature_celsius,num,实验温度 (℃)
+expression_host,str,重组蛋白表达宿主物种
+expression_vector,str,表达质粒/载体名称
+expression_induction,str,诱导表达条件描述
+verification_status,str,验证状态：Manually Verified / Expert QA Verified

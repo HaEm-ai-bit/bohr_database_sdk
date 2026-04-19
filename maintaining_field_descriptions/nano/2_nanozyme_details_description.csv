@@ -1,0 +1,22 @@
+字段名,数据类型,描述
+doi,str,数据来源文献DOI标识符
+entry_id,str,纳米酶数据条目唯一标识符，所有表只需一个entry_id字段即可关联
+nanozyme_name,str,纳米酶名称，通常描述材料组成或结构特征
+alias_or_label,str,别名或标签，文献中使用的其他命名
+material_class,str,"材料类别，如Metal Oxide (金属氧化物), Metal (金属), Carbon-based (碳基), MOF (金属有机框架)等"
+composition_core,str,核心组成，纳米酶的核心材料成分
+composition_shell,str,壳层组成，核壳结构纳米酶的壳层材料
+composition_doping,str,掺杂元素，材料中掺杂的元素或分子
+composition_surface_mod,str,表面修饰，纳米酶表面的功能化修饰物质
+synthesis_method,str,合成方法，纳米酶的制备方法
+morphology,str,"形貌，纳米酶的形态特征，如sphere (球形), rod (棒状), sheet (片状)等"
+surface_area_value,num,比表面积数值
+surface_area_unit,str,比表面积单位，通常为m²/g
+surface_area_method,str,比表面积测定方法，如BET法
+zeta_potential_value,num,ζ电位数值，单位为mV
+zeta_potential_unit,str,ζ电位单位，通常为mV
+zeta_potential_ph,num,ζ电位测定时的pH值
+crystallinity_phase,str,"晶相，材料的晶体相态，如cubic (立方), hexagonal (六方)等"
+crystallinity_structure,str,"晶体结构，如face-centered cubic (面心立方), body-centered cubic (体心立方)等"
+crystallinity_comment,str,晶体结构补充说明
+verification_status,str,"数据验证状态，可能值: Expert QA Verified (专家QA验证), Auto-extracted (自动提取)"

@@ -1,0 +1,7 @@
+字段名,数据类型,含义
+bioreaction_id,str,生物反应数据的唯一标识符，用于生物反应库、酶库、代谢物库的数据关联
+doi,str,文献数字对象标识符
+reaction_equation,str,生化反应平衡方程式
+reaction_type_reversible,str,反应可逆性 (Yes/No/Not specified)
+notes,str,提取备注（包括特殊案例标注）
+verification_status,str,验证状态：Manually Verified / Expert QA Verified
