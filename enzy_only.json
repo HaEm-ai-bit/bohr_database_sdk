@@ -1,9 +1,0 @@
-{
-  "description": "酶库分类上传配置（仅酶库 3 张表）",
-  "database_ak": "555fu",
-  "tables": [
-    {"table_name": "1_enzymes_main", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/enzy/1_enzymes_main.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/2.enzyme_database/1_enzymes_main.csv", "category": "酶库"},
-    {"table_name": "2_experimental_conditions", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/enzy/2_experimental_conditions.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/2.enzyme_database/2_experimental_conditions.csv", "category": "酶库"},
-    {"table_name": "3_kinetic_parameters", "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/enzy/3_kinetic_parameters.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/2.enzyme_database/3_kinetic_parameters.csv", "category": "酶库"}
-  ]
-}

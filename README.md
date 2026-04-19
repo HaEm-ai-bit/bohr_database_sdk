@@ -13,22 +13,25 @@
 
 ```
 bohr_database_sdk/
-├── upload_database_tables_omit_empty.py   # 核心：建表 + 批量上传
-├── bio_only.json                          # 生物反应库批量配置（10张表）
-├── enzy_only.json                         # 酶库批量配置（3张表）
-├── metabolite_only.json                   # 代谢物库批量配置（1张表）
-├── nano_only.json                         # 纳米酶库批量配置（8张表）
-├── run_upload.sh                          # 一键分库上传（支持指定单个库）
-├── run_upload_single.sh                   # 单张表上传示例
-├── verify_setup.sh                        # 上传前环境预检
-├── maintaining_field_descriptions/
-│   ├── script.py                          # 修改已有表的表结构（AlterTable）
-│   ├── bio/      （10个CSV）              # 生物反应库字段描述
-│   ├── enzy/     （3个CSV）               # 酶库字段描述
-│   ├── metabolite/（1个CSV）              # 代谢物库字段描述
-│   └── nano/     （8个CSV）               # 纳米酶库字段描述
-└── new_table/
-    └── script.py                          # 从Excel/CSV建新表并灌数
+├── scripts/
+│   ├── upload.py          # 核心：建表 + 批量上传
+│   ├── alter_schema.py    # 修改已有表的表结构（AlterTable）
+│   └── create_table.py    # 从 Excel/CSV 建新表并灌数
+├── configs/
+│   ├── bio.json           # 生物反应库批量配置（10 张表）
+│   ├── enzy.json          # 酶库批量配置（3 张表）
+│   ├── metabolite.json    # 代谢物库批量配置（1 张表）
+│   └── nano.json          # 纳米酶库批量配置（8 张表）
+├── schemas/
+│   ├── bio/               # 生物反应库字段描述（10 个 CSV）
+│   ├── enzy/              # 酶库字段描述（3 个 CSV）
+│   ├── metabolite/        # 代谢物库字段描述（1 个 CSV）
+│   └── nano/              # 纳米酶库字段描述（8 个 CSV）
+├── bin/
+│   ├── run.sh             # 一键分库上传
+│   ├── run_single.sh      # 单张表上传示例
+│   └── check.sh           # 上传前环境预检
+└── README.md
 ```
 
 ---
@@ -56,10 +59,10 @@ pip3 install bohrium_open_sdk pandas openpyxl
 
 ### 核心脚本
 
-`upload_database_tables_omit_empty.py` — 读取字段描述 CSV → 建表 → 批量插入数据。
+`scripts/upload.py` — 读取字段描述 CSV → 建表 → 批量插入数据。
 
-**空列处理**：CSV 某列为空时，该字段不写入 JSON（不传键），前端显示 null，避免被误显示为 0。  
-**inf 处理**：加 `--inf-replace` 后，仅对数值列（`dataType=num`）将 `inf/-inf` 替换为 `±1e30`，避免非标准 JSON 导致接口报错（bio 库表9需要）。
+**空列处理**：CSV 某列为空时，该字段不写入 JSON（不传键），前端显示 null。  
+**inf 处理**：加 `--inf-replace` 后，仅对数值列将 `inf/-inf` 替换为 `±1e30`（bio 库表9需要）。
 
 ### 命令参数
 
@@ -70,71 +73,55 @@ pip3 install bohrium_open_sdk pandas openpyxl
 -c / --csv          数据 CSV 路径（单表模式必填）
 -t / --table-name   表名称（单表模式必填）
 -bs/ --batch-size   每批插入条数（默认 5000）
---skip-exists       表已存在时跳过（不报错）
+--skip-exists       表已存在时跳过
 --inf-replace       数值列 inf → ±1e30（bio 库必须加）
 ```
 
 ### 各库上传命令
 
-**纳米酶库（878qb，8张表）**
 ```bash
-python3 /share/allpdfs/bohr_database_sdk/upload_database_tables_omit_empty.py \
-  -k "878qb" -b /share/allpdfs/bohr_database_sdk/nano_only.json \
-  --batch-size 5000 --skip-exists
-```
+# 纳米酶库（878qb，8张表）
+python3 scripts/upload.py -k "878qb" -b configs/nano.json --batch-size 5000 --skip-exists
 
-**代谢物库（351de，1张表）**
-```bash
-python3 /share/allpdfs/bohr_database_sdk/upload_database_tables_omit_empty.py \
-  -k "351de" -b /share/allpdfs/bohr_database_sdk/metabolite_only.json \
-  --batch-size 2000 --skip-exists
-```
+# 代谢物库（351de，1张表）
+python3 scripts/upload.py -k "351de" -b configs/metabolite.json --batch-size 2000 --skip-exists
 
-**酶库（555fu，3张表）**
-```bash
-python3 /share/allpdfs/bohr_database_sdk/upload_database_tables_omit_empty.py \
-  -k "555fu" -b /share/allpdfs/bohr_database_sdk/enzy_only.json \
-  --batch-size 5000 --skip-exists
-```
+# 酶库（555fu，3张表）
+python3 scripts/upload.py -k "555fu" -b configs/enzy.json --batch-size 5000 --skip-exists
 
-**生物反应库（531km，10张表）**
-```bash
-# 必须加 --inf-replace（表9含 inf 值）
-python3 /share/allpdfs/bohr_database_sdk/upload_database_tables_omit_empty.py \
-  -k "531km" -b /share/allpdfs/bohr_database_sdk/bio_only.json \
-  --batch-size 5000 --skip-exists --inf-replace
+# 生物反应库（531km，10张表）—— 必须加 --inf-replace
+python3 scripts/upload.py -k "531km" -b configs/bio.json --batch-size 5000 --skip-exists --inf-replace
 ```
 
 大表可在命令前加 `CLIENT_TIMEOUT=300` 延长超时。
 
-### 一键运行所有库
+### 一键运行
 
 ```bash
 export BOHR_ACCESS_KEY=<your_key>
-bash /share/allpdfs/bohr_database_sdk/run_upload.sh          # 全部4个库
-bash /share/allpdfs/bohr_database_sdk/run_upload.sh nano     # 只跑纳米酶库
-bash /share/allpdfs/bohr_database_sdk/run_upload.sh bio      # 只跑生物反应库
+
+bash bin/run.sh          # 全部 4 个库
+bash bin/run.sh nano     # 只跑纳米酶库
+bash bin/run.sh bio      # 只跑生物反应库
+bash bin/run.sh enzy     # 只跑酶库
+bash bin/run.sh metabolite # 只跑代谢物库
 ```
 
-### 批量配置 JSON 格式
-
-每个 `*_only.json` 格式如下，`tables` 数组按顺序上传：
+### 配置文件格式（`configs/*.json`）
 
 ```json
 {
   "tables": [
     {
       "table_name": "1_reactions_core",
-      "desc_file": "/share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/1_reactions_core.csv",
+      "desc_file": "/share/allpdfs/bohr_database_sdk/schemas/bio/1_reactions_core.csv",
       "data_file": "/share/allpdfs/final_bioreaction_extraction_database/3.bioreaction_database/1_reactions_core.csv"
     }
   ]
 }
 ```
 
-### 字段描述 CSV 格式
-
-`maintaining_field_descriptions/` 下各 CSV 定义表结构，每行一个字段：
+### 字段描述 CSV 格式（`schemas/**/*.csv`）
 
 ```csv
 字段名,数据类型,含义
@@ -151,16 +138,14 @@ smiles,smiles,底物SMILES结构式
 
 **适用场景**：表已建好并有数据，需要新增/修改字段描述（不删数据）。
 
-**脚本**：`maintaining_field_descriptions/script.py`
-
 ```bash
 # 从 CSV 更新表结构
-python3 /share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/script.py \
-  -c /share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/bio/2_enzymes.csv \
+python3 scripts/alter_schema.py \
+  -c schemas/bio/2_enzymes.csv \
   -ak <target_table_ak>
 
 # 从 Excel 更新表结构
-python3 /share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/script.py \
+python3 scripts/alter_schema.py \
   -f /path/to/schema.xlsx \
   -s "Sheet1" \
   -ak <target_table_ak>
@@ -168,56 +153,32 @@ python3 /share/allpdfs/bohr_database_sdk/maintaining_field_descriptions/script.p
 
 | 参数 | 说明 |
 |------|------|
-| `-c` | 字段描述 CSV 路径（与 `maintaining_field_descriptions/` 下格式相同） |
-| `-f` | Excel 路径（含字段名/数据类型/描述列） |
+| `-c` | 字段描述 CSV 路径 |
+| `-f` | Excel 路径 |
 | `-s` | Excel sheet 名称（默认第一个） |
 | `-ak`| 目标表的 AccessKey（必填） |
-
-> 此脚本调用 `AlterTable` 接口，仅更新 schema，不影响已有数据。
 
 ---
 
 ## 工作流三：建新表（从 Excel 定义表结构）
 
-**适用场景**：有新的数据库表需要从 Excel 定义字段并首次灌入数据。
-
-**脚本**：`new_table/script.py`
+**适用场景**：有新的数据表需要从 Excel 定义字段并首次灌入数据。
 
 ```bash
-python3 /share/allpdfs/bohr_database_sdk/new_table/script.py \
+python3 scripts/create_table.py \
   -k <db_ak> \
   -e /path/to/schema.xlsx \
   -c /path/to/data.csv \
   -t <table_name>
 ```
 
-| 参数 | 说明 |
-|------|------|
-| `-k` | 数据库 AccessKey |
-| `-e` | Excel schema 文件路径 |
-| `-c` | 数据 CSV 路径 |
-| `-t` | 表名称 |
-
-> 与工作流一的区别：schema 来源是 Excel 而非 CSV，适合首次定义新表时使用。
-
 ---
 
 ## 辅助脚本
 
-### verify_setup.sh — 上传前预检
-
-检查脚本、JSON 配置、字段描述 CSV、数据目录、Python 依赖是否全部就绪：
-
 ```bash
-bash /share/allpdfs/bohr_database_sdk/verify_setup.sh
-```
-
-### run_upload_single.sh — 单表上传示例
-
-已内置代谢物库单表配置，可参考修改路径和表名后使用：
-
-```bash
-bash /share/allpdfs/bohr_database_sdk/run_upload_single.sh
+bash bin/check.sh        # 上传前预检（验证脚本/配置/依赖是否就绪）
+bash bin/run_single.sh   # 单张表上传示例（修改脚本内变量后使用）
 ```
 
 ---
@@ -231,19 +192,13 @@ bash /share/allpdfs/bohr_database_sdk/run_upload_single.sh
 | 项目 | 修改前 | 修改后 |
 |------|--------|--------|
 | 表名 | `6_nanozyme_characterization_size` | `6_nanozyme_char_size` |
-| 描述文件 | `nano/6_nanozyme_characterization_size_standardized_description.csv` | `nano/6_nanozyme_char_size_standardized_description.csv` |
+| 描述文件 | `schemas/nano/6_nanozyme_characterization_size_standardized_description.csv` | `schemas/nano/6_nanozyme_char_size_standardized_description.csv` |
 | 数据文件 | `4.nanozyme_database/6_nanozyme_characterization_size_standardized.csv` | `4.nanozyme_database/6_nanozyme_char_size_standardized.csv` |
-
-描述文件、数据文件通过重命名完成，内容未改；`nano_only.json` 中仅更新表6一条配置。
 
 ### 生物反应库表 2 描述文件补列
 
-数据文件 `2_enzymes.csv` 比原描述文件多 4 列（`sequence`、`match_source`、`match_description`、`seq_confidence`），且第 23 行含义列含英文逗号导致 CSV 解析报错。
-
-修改 `maintaining_field_descriptions/bio/2_enzymes.csv`：字段顺序与数据文件对齐，补充 4 个新字段行，含逗号的含义用双引号包裹。
+数据文件 `2_enzymes.csv` 比原描述文件多 4 列（`sequence`、`match_source`、`match_description`、`seq_confidence`），且第 23 行含义列含英文逗号导致 CSV 解析报错。修改 `schemas/bio/2_enzymes.csv`：字段顺序对齐，补充 4 个新字段行，含逗号的含义用双引号包裹。
 
 ### 生物反应库表 9 的 inf 问题
 
-`9_inhibition_params.csv` 的 `value` 列有 3 行值为 `inf`，pandas 读取后转为 `float('inf')`，`json.dumps` 输出 `Infinity`（非标准JSON），接口报 `invalid character 'I'`。
-
-解决：上传 bio 库时加 `--inf-replace`，脚本对 `dataType=num` 的列将 inf/-inf 替换为 ±1e30 后序列化。
+`9_inhibition_params.csv` 的 `value` 列有 3 行值为 `inf`，pandas 读取后转为 `float('inf')`，`json.dumps` 输出 `Infinity`（非标准JSON），接口报 `invalid character 'I'`。解决：上传 bio 库时加 `--inf-replace`，脚本对数值列将 inf/-inf 替换为 ±1e30。

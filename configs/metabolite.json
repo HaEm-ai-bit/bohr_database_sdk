@@ -1,0 +1,7 @@
+{
+  "description": "代谢物库分类上传配置（仅代谢物 1 张表）",
+  "database_ak": "351de",
+  "tables": [
+    {"table_name": "metabolite_database", "desc_file": "/share/allpdfs/bohr_database_sdk/schemas/metabolite/metabolite.csv", "data_file": "/share/allpdfs/final_bioreaction_extraction_database/1.metabolite_database/Metabolite_Database.csv", "category": "代谢物库"}
+  ]
+}
